@@ -1,2 +1,2 @@
 # MyTodo
- All authentication and database flow is done only UI design left
+ Complete todo app with firebase authentication and firestore databsae connected.
