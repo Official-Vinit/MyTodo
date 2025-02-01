@@ -13,7 +13,7 @@ class CarListViewModel : ViewModel() {
 
     private var _taskList = MutableStateFlow<List<Task>>(emptyList())
     var taskList = _taskList.asStateFlow()
-
+    
     private val db = Firebase.firestore
 
     init {
@@ -34,23 +34,25 @@ class CarListViewModel : ViewModel() {
             }
     }
 
-    fun createTask(taskname: String  , taskdesc: String) {
+    fun createTask(taskname: String, taskdesc: String, dueDate: String, dueTime: String) {
         val task = hashMapOf(
-            "id" to 2,
+            "id" to 4,
             "taskName" to taskname,
             "taskDescription" to taskdesc,
             "completed" to false,
-            "dueDate" to "2023-01-11"
+            "dueDate" to dueDate,
+            "dueTime" to dueTime
         )
 
         db.collection("tasks")
             .add(task)
             .addOnSuccessListener {
-                Log.d("document", "CREATED")
+                Log.d("document", "ADDED")
             }
     }
 
-//    fun updateCar() {
+
+    //    fun updateCar() {
 //        val car = hashMapOf(
 //            "id" to 4,
 //            "brand" to "Mazda"
@@ -63,12 +65,13 @@ class CarListViewModel : ViewModel() {
 //            }
 //    }
 //
-//    fun deleteCar() {
-//        db.collection("cars")
-//            .document("uQ9C9PzGXxw1ivXm0zZ4")
+//    fun deleteTask() {
+//        db.collection("tasks")
+//            .document("abrar")
 //            .delete()
 //            .addOnSuccessListener {
 //                Log.d("document", "DELETED")
 //            }
 //    }
 }
+

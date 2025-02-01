@@ -20,7 +20,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.mytodo.ui.auth.LogInScreen
 import com.example.mytodo.ui.auth.SignupScreen
-import com.example.mytodo.ui.task.TaskListScreen
+import com.example.mytodo.ui.task.TodoScreen
 import com.example.mytodo.ui.theme.MyTodoTheme
 import com.google.android.libraries.identity.googleid.GetGoogleIdOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
@@ -48,7 +48,7 @@ class MainActivity : ComponentActivity() {
                     //LogInScreen(modifier = Modifier.padding(innerPadding))
 
                     val navController = rememberNavController()
-                    NavHost(navController = navController, startDestination = "home", modifier = Modifier.padding(innerPadding)) {
+                    NavHost(navController = navController, startDestination = "login", modifier = Modifier.padding(innerPadding)) {
                         composable("login") {
                             LogInScreen(navController)
                         }
@@ -56,7 +56,7 @@ class MainActivity : ComponentActivity() {
                             SignupScreen(navController)
                         }
                         composable("home") {
-                            TaskListScreen(navController, modifier = Modifier)
+                            TodoScreen()
                         }
                     }
                 }
